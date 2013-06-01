@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CliqueUpModel.Model
 {
-    public class EventCategory
+    public class Category
     {
         public Guid Id { get; set; }
         public string Description { get; set; }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CliqueUp.Tests", "CliqueUp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CliqueUpModels", "Models\CliqueUpModels.csproj", "{DA775959-7DAB-4D03-8DF8-7F718D1B6C10}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataServiceLayer", "DataServiceLayer\DataServiceLayer.csproj", "{DFDE8A36-FBD0-4648-9FDC-916535562EB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{DA775959-7DAB-4D03-8DF8-7F718D1B6C10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA775959-7DAB-4D03-8DF8-7F718D1B6C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA775959-7DAB-4D03-8DF8-7F718D1B6C10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFDE8A36-FBD0-4648-9FDC-916535562EB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFDE8A36-FBD0-4648-9FDC-916535562EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFDE8A36-FBD0-4648-9FDC-916535562EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFDE8A36-FBD0-4648-9FDC-916535562EB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
