@@ -1,0 +1,14 @@
+#body {
+    height: 100%;
+}
+
+#contentBody {
+    height: 100%;
+    padding: 10px;
+}
+
+html, body, #map-canvas {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
