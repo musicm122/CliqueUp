@@ -17,6 +17,6 @@ namespace CliqueUpModel.Model
         public bool IsActive { get; set; }
 
         public virtual List<EventMessage> Messages { get; set; } 
-        public virtual List<EventCategory> Categories { get; set; }
+        public virtual List<Category> Categories { get; set; }
     }
 }

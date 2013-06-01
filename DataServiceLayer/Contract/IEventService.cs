@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using CliqueUpModel.Model;
 
-namespace CliqueUpModel.Action
+namespace CliqueUpModel.Contract
 {
-    interface ICliqueUpModel
+    interface IEventService
     {
         /// <summary>
         /// Creates an event

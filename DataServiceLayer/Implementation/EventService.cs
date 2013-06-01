@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using CliqueUpModel.Model;
+using CliqueUpModel.Contract;
 
-namespace CliqueUpModel.Action
+namespace CliqueUpModel.Implementation
 {
-    public class CuQueryModel : ICliqueUpModel
+    public class EventService : IEventService
     {
         public Event CreateEvent(string title, string description, IEnumerable<string> categories, System.DateTime start, System.DateTime end, decimal lat, decimal lon)
         {
@@ -29,12 +30,12 @@ namespace CliqueUpModel.Action
             throw new System.NotImplementedException();
         }
 
-        private IEnumerable<EventCategory> GetCategories(CliqueUpContext cliqueUpContext, IEnumerable<string> categories)
+        public IEnumerable<Category> GetCategories(CliqueUpContext cliqueUpContext, IEnumerable<string> categories)
         {
             return categories.Select(category => GetOrCreateCategoryIfNotExists(cliqueUpContext, category));
         }
 
-        private EventCategory GetOrCreateCategoryIfNotExists(CliqueUpContext cliqueUpContext, string category)
+        public Category GetOrCreateCategoryIfNotExists(CliqueUpContext cliqueUpContext, string category)
         {
             category = category.Trim().ToLower();
             var dbCategory = cliqueUpContext
@@ -43,7 +44,7 @@ namespace CliqueUpModel.Action
 
             if (dbCategory == null)
             {
-                dbCategory = new EventCategory()
+                dbCategory = new Category()
                     {
                         Id = Guid.NewGuid(),
                         Description = category

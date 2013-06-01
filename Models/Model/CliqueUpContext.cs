@@ -7,6 +7,6 @@ namespace CliqueUpModel.Model
         public DbSet<User> Users { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<UserMessage> UserMessages { get; set; }
-        public DbSet<EventCategory> EventCategories { get; set; }
+        public DbSet<Category> EventCategories { get; set; }
     }
 }
