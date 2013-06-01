@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @Html.Partial("_Head")
+    </head>
+    <body>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        @Html.Partial("_Footer")
+    </body>
+    @RenderSection("scripts", required: false)
+</html>

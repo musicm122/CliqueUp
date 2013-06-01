@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{0A14C062-F44C-4751-80E0-6C62283F808C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CliqueUp.Tests", "CliqueUp.Tests\CliqueUp.Tests.csproj", "{912D8B46-62E4-4A10-A194-F083388237D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CliqueUpModels", "Models\CliqueUpModels.csproj", "{DA775959-7DAB-4D03-8DF8-7F718D1B6C10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A14C062-F44C-4751-80E0-6C62283F808C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A14C062-F44C-4751-80E0-6C62283F808C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A14C062-F44C-4751-80E0-6C62283F808C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A14C062-F44C-4751-80E0-6C62283F808C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{912D8B46-62E4-4A10-A194-F083388237D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{912D8B46-62E4-4A10-A194-F083388237D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{912D8B46-62E4-4A10-A194-F083388237D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{912D8B46-62E4-4A10-A194-F083388237D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA775959-7DAB-4D03-8DF8-7F718D1B6C10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA775959-7DAB-4D03-8DF8-7F718D1B6C10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA775959-7DAB-4D03-8DF8-7F718D1B6C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA775959-7DAB-4D03-8DF8-7F718D1B6C10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
