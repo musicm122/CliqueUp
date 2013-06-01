@@ -54,7 +54,7 @@ namespace CliqueUp.Controllers
         {
             WebSecurity.Logout();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Event");
         }
 
         //
@@ -81,7 +81,7 @@ namespace CliqueUp.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Event");
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -337,7 +337,7 @@ namespace CliqueUp.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Event");
             }
         }
 

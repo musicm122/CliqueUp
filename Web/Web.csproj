@@ -190,14 +190,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\EventModel.cs" />
+    <Compile Include="Models\NewEventModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -329,7 +328,7 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\less.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Views\Home\Index.cshtml">
+    <Content Include="Views\Event\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Web.config" />

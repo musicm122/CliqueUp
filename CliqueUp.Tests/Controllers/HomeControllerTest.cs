@@ -10,13 +10,13 @@ using CliqueUp.Controllers;
 namespace CliqueUp.Tests.Controllers
 {
     [TestClass]
-    public class HomeControllerTest
+    public class EventControllerTest
     {
         [TestMethod]
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            EventController controller = new EventController();
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
