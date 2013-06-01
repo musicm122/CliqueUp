@@ -4,6 +4,7 @@ using System.Linq;
 using CliqueUpModel.Model;
 using CliqueUpModel.Contract;
 
+
 namespace CliqueUpModel.Implementation
 {
     public class EventService : IEventService

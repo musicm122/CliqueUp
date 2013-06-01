@@ -374,6 +374,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataServiceLayer\DataServiceLayer.csproj">
+      <Project>{dfde8a36-fbd0-4648-9fdc-916535562eb7}</Project>
+      <Name>DataServiceLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\CliqueUpModels.csproj">
       <Project>{da775959-7dab-4d03-8df8-7f718d1b6c10}</Project>
       <Name>CliqueUpModels</Name>
