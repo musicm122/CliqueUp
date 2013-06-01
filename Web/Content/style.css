@@ -12,3 +12,7 @@ html, body, #map-canvas {
     padding: 0;
     height: 100%;
 }
+
+#map-canvas img {
+    max-width: none !important;
+}
