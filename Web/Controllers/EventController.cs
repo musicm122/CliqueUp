@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CliqueUpModel.Implementation;
 using CliqueUp.Models;
+using DataServiceLayer.Implementation;
 
 namespace CliqueUp.Controllers
 {

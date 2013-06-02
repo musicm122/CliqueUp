@@ -22,10 +22,10 @@ namespace CliqueUp.Models
         public DateTime EventEnd { get; set; }
         
         [Required]
-        public decimal Longititude { get; set; }
+        public double Longititude { get; set; }
         
         [Required]
-        public decimal Latitude { get; set; }
+        public double Latitude { get; set; }
 
     }
 }
