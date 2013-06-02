@@ -4,7 +4,7 @@ using CliqueUpModel.Model;
 
 namespace CliqueUpModel.Model
 {
-    public partial class Event
+    public class CategoryEvent
     {
         public Guid Id { get; set; }
         public string Title { get; set; }

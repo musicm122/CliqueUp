@@ -6,7 +6,7 @@ using System.Web;
 
 namespace CliqueUp.Models
 {
-    public class NewEventModel
+    public class EventModel
     {
         [Required]
         public string Title { get; set; }

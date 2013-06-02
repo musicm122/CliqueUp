@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CliqueUpModel.Model;
+
 namespace CliqueUpModel.Contract
 {
     interface IEventService
@@ -19,7 +20,7 @@ namespace CliqueUpModel.Contract
         /// <param name="lat">Approximate latitude of the event</param>
         /// <param name="lon">Approximate longitude of the event</param>
         /// <returns>Event object created.</returns>
-        CategoryEvent CreateEvent(string title, string description, IEnumerable<string> categories, DateTime start, DateTime end, double lat, double lon);
+        Event CreateEvent(string title, string description, IEnumerable<string> categories, DateTime start, DateTime end, double lat, double lon);
         
         /// <summary>
         /// Marks an event as active
@@ -46,23 +47,8 @@ namespace CliqueUpModel.Contract
         /// <param name="baseLongitude"></param>
         /// <param name="searchRadiusMiles"></param>
         /// <returns></returns>
-        IEnumerable<CategoryEvent> SearchEvents(string searchQuery, double baseLatitude, double baseLongitude, int searchRadiusMiles);
+        IEnumerable<Event> SearchEvents(string searchQuery, double baseLatitude, double baseLongitude, int searchRadiusMiles);
 
-        /// <summary>
-        /// Post a message to the event's message board
-        /// </summary>
-        /// <param name="userid"></param>
-        /// <param name="eventId"></param>
-        /// <param name="messageText"></param>
-        /// <returns>Created message object</returns>
         EventMessage PostEventMessage(Guid userid, Guid eventId, string messageText);
-
-        /// <summary>
-        /// Mark a user as attending an event.
-        /// </summary>
-        /// <param name="userid"></param>
-        /// <param name="eventid"></param>
-        /// <returns></returns>
-        void JoinEvent(Guid userid, Guid eventid);
     }
 }

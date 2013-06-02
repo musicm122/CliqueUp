@@ -4,16 +4,21 @@ using System.Linq;
 using CliqueUpModel.Model;
 using CliqueUpModel.Contract;
 using DataServiceLayer.Helper;
+using Models.Model;
 using Google.Maps.Geocoding;
 
 namespace DataServiceLayer.Implementation
 {
     public class EventService : IEventService
     {
-        public CategoryEvent CreateEvent(string title, string description, IEnumerable<string> categories, DateTime start, DateTime end, double lat, double lon)
+<<<<<<< HEAD
+        public CategoryEvent CreateEvent(string title, string description, IEnumerable<string> categories, System.DateTime start, System.DateTime end, decimal lat, decimal lon)
+=======
+        public Event CreateEvent(string title, string description, IEnumerable<string> categories, DateTime start, DateTime end, double lat, double lon)
+>>>>>>> 1a9bde866b5c03474be7c2eae534191bb436241f
         {
             var dbContext = new CliqueUpContext();
-            var newEvent = new CategoryEvent
+            var newEvent = new Event
             {
                 Id = Guid.NewGuid(),
                 Categories = GetCategories(dbContext, categories),
@@ -28,10 +33,16 @@ namespace DataServiceLayer.Implementation
                 DisabledOn = null,
             };
 
-            dbContext.CategoryEvents.Add(newEvent);
+<<<<<<< HEAD
+            var newEvent = new CategoryEvent()
+                {
+                    Id = Guid.NewGuid(),
+=======
+            dbContext.Events.Add(newEvent);
             dbContext.SaveChanges();
             return newEvent;
         }
+>>>>>>> 1a9bde866b5c03474be7c2eae534191bb436241f
 
         public bool OpenEvent(Guid userId, Guid eventId)
         {
@@ -44,7 +55,7 @@ namespace DataServiceLayer.Implementation
             throw new NotImplementedException();
         }
 
-        public IEnumerable<CategoryEvent> SearchEvents(string searchQuery, string location, int searchRadiusMiles)
+        public IEnumerable<Event> SearchEvents(string searchQuery, string location, int searchRadiusMiles)
         {
             var request = new GeocodingRequest {Address = location};
             var response = GeocodingService.GetResponse(request);
@@ -56,15 +67,15 @@ namespace DataServiceLayer.Implementation
             return this.SearchEvents(searchQuery, latitude, longitude, searchRadiusMiles);
         }
 
-        public IEnumerable<CategoryEvent> SearchEvents(string searchQuery, double baseLatitude, double baseLongitude, int searchRadiusMiles)
+        public IEnumerable<Event> SearchEvents(string searchQuery, double baseLatitude, double baseLongitude, int searchRadiusMiles)
         {
             searchQuery = searchQuery == null ? null : searchQuery.Trim().ToLower();
             var splitCategories = searchQuery == null ? 
                 null : searchQuery.Split(' ').Select(s => s.Trim()).Where(s => s.StartsWith("#"));
 
             var dbContext = new CliqueUpContext();
-            var events =
-               (from e in dbContext.CategoryEvents.Include("Categories")
+            var events = 
+               (from e in dbContext.Events.Include("Categories")
                 where searchQuery == null || e.Description.Contains(searchQuery)
                 where splitCategories == null || e.Categories.Any(c => splitCategories.Any(sc => sc == c.Description))
                 select e)
@@ -89,20 +100,6 @@ namespace DataServiceLayer.Implementation
             dbContext.SaveChanges();
 
             return newMessage;
-        }
-
-        public void JoinEvent(Guid userid, Guid eventid)
-        {
-            var dbContext = new CliqueUpContext();
-            var eventUser = new EventUser()
-                {
-                    Id = Guid.Empty,
-                    UserId = userid,
-                    EventId = eventid
-                };
-
-            dbContext.EventUsers.Add(eventUser);
-            dbContext.SaveChanges();
         }
 
         public List<Category> GetCategories(CliqueUpContext cliqueUpContext, IEnumerable<string> categories)

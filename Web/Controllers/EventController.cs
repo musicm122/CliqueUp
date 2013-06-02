@@ -19,11 +19,10 @@ namespace CliqueUp.Controllers
 
         public ActionResult Index()
         {
-            
             return View();
         }
 
-        public ActionResult Create(NewEventModel model) 
+        public ActionResult Create(EventModel model) 
         {
             if (ModelState.IsValid)
             {
@@ -52,10 +51,11 @@ namespace CliqueUp.Controllers
             return View();
         }
         
-        //public ActionResult Update(int id, model)
-        //{
-        //    return View();
-        //}
+        public ActionResult Open(Guid userId, Guid id )
+        {
+            _eventService.OpenEvent(userId, id);
+            return View();
+        }
         
         public ActionResult Delete()
         {

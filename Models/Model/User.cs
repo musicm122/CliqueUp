@@ -10,6 +10,6 @@ namespace CliqueUpModel.Model
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
-        public virtual List<Event> Events { get; set; } 
+        public virtual List<CategoryEvent> Events { get; set; } 
     }
 }
