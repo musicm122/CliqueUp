@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using CliqueUpModel.Model;
+using Models.Model;
 
 namespace CliqueUp.Controllers
 {

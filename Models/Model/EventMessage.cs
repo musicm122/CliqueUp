@@ -11,6 +11,6 @@ namespace CliqueUpModel.Model
         public string Text { get; set; }
         public User User { get; set; }
 
-        public Event Event { get; set; }
+        public CategoryEvent Event { get; set; }
     }
 }

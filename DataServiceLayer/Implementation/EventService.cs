@@ -11,10 +11,10 @@ namespace DataServiceLayer.Implementation
 {
     public class EventService : IEventService
     {
-        public Event CreateEvent(string title, string description, IEnumerable<string> categories, DateTime start, DateTime end, double lat, double lon)
+        public CategoryEvent CreateEvent(string title, string description, IEnumerable<string> categories, DateTime start, DateTime end, double lat, double lon)
         {
             var dbContext = new CliqueUpContext();
-            var newEvent = new Event
+            var newEvent = new CategoryEvent
             {
                 Id = Guid.NewGuid(),
                 Categories = GetCategories(dbContext, categories),
@@ -29,7 +29,7 @@ namespace DataServiceLayer.Implementation
                 DisabledOn = null,
             };
 
-            dbContext.Events.Add(newEvent);
+            dbContext.CategoryEvents.Add(newEvent);
             dbContext.SaveChanges();
             return newEvent;
         }
@@ -45,7 +45,7 @@ namespace DataServiceLayer.Implementation
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Event> SearchEvents(string searchQuery, string location, int searchRadiusMiles)
+        public IEnumerable<CategoryEvent> SearchEvents(string searchQuery, string location, int searchRadiusMiles)
         {
             var request = new GeocodingRequest {Address = location};
             var response = GeocodingService.GetResponse(request);
@@ -57,15 +57,15 @@ namespace DataServiceLayer.Implementation
             return this.SearchEvents(searchQuery, latitude, longitude, searchRadiusMiles);
         }
 
-        public IEnumerable<Event> SearchEvents(string searchQuery, double baseLatitude, double baseLongitude, int searchRadiusMiles)
+        public IEnumerable<CategoryEvent> SearchEvents(string searchQuery, double baseLatitude, double baseLongitude, int searchRadiusMiles)
         {
             searchQuery = searchQuery == null ? null : searchQuery.Trim().ToLower();
             var splitCategories = searchQuery == null ? 
                 null : searchQuery.Split(' ').Select(s => s.Trim()).Where(s => s.StartsWith("#"));
 
             var dbContext = new CliqueUpContext();
-            var events = 
-               (from e in dbContext.Events.Include("Categories")
+            var events =
+               (from e in dbContext.CategoryEvents.Include("Categories")
                 where searchQuery == null || e.Description.Contains(searchQuery)
                 where splitCategories == null || e.Categories.Any(c => splitCategories.Any(sc => sc == c.Description))
                 select e)

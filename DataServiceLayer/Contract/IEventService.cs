@@ -20,7 +20,7 @@ namespace CliqueUpModel.Contract
         /// <param name="lat">Approximate latitude of the event</param>
         /// <param name="lon">Approximate longitude of the event</param>
         /// <returns>Event object created.</returns>
-        Event CreateEvent(string title, string description, IEnumerable<string> categories, DateTime start, DateTime end, double lat, double lon);
+        CategoryEvent CreateEvent(string title, string description, IEnumerable<string> categories, DateTime start, DateTime end, double lat, double lon);
         
         /// <summary>
         /// Marks an event as active
@@ -47,7 +47,7 @@ namespace CliqueUpModel.Contract
         /// <param name="baseLongitude"></param>
         /// <param name="searchRadiusMiles"></param>
         /// <returns></returns>
-        IEnumerable<Event> SearchEvents(string searchQuery, double baseLatitude, double baseLongitude, int searchRadiusMiles);
+        IEnumerable<CategoryEvent> SearchEvents(string searchQuery, double baseLatitude, double baseLongitude, int searchRadiusMiles);
 
         EventMessage PostEventMessage(Guid userid, Guid eventId, string messageText);
     }
