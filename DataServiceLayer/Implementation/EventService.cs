@@ -5,6 +5,7 @@ using CliqueUpModel.Model;
 using CliqueUpModel.Contract;
 using DataServiceLayer.Helper;
 using Google.Maps.Geocoding;
+using Models.Model;
 
 namespace DataServiceLayer.Implementation
 {
