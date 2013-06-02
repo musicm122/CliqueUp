@@ -4,7 +4,6 @@ using System.Linq;
 using CliqueUpModel.Model;
 using CliqueUpModel.Contract;
 using DataServiceLayer.Helper;
-using Models.Model;
 using Google.Maps.Geocoding;
 
 namespace DataServiceLayer.Implementation
@@ -90,6 +89,20 @@ namespace DataServiceLayer.Implementation
             dbContext.SaveChanges();
 
             return newMessage;
+        }
+
+        public void JoinEvent(Guid userid, Guid eventid)
+        {
+            var dbContext = new CliqueUpContext();
+            var eventUser = new EventUser()
+                {
+                    Id = Guid.Empty,
+                    UserId = userid,
+                    EventId = eventid
+                };
+
+            dbContext.EventUsers.Add(eventUser);
+            dbContext.SaveChanges();
         }
 
         public List<Category> GetCategories(CliqueUpContext cliqueUpContext, IEnumerable<string> categories)

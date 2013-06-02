@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CliqueUpModel.Model;
-
 namespace CliqueUpModel.Contract
 {
     interface IEventService
@@ -49,6 +48,21 @@ namespace CliqueUpModel.Contract
         /// <returns></returns>
         IEnumerable<Event> SearchEvents(string searchQuery, double baseLatitude, double baseLongitude, int searchRadiusMiles);
 
+        /// <summary>
+        /// Post a message to the event's message board
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="eventId"></param>
+        /// <param name="messageText"></param>
+        /// <returns>Created message object</returns>
         EventMessage PostEventMessage(Guid userid, Guid eventId, string messageText);
+
+        /// <summary>
+        /// Mark a user as attending an event.
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="eventid"></param>
+        /// <returns></returns>
+        void JoinEvent(Guid userid, Guid eventid);
     }
 }

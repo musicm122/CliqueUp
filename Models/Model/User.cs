@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using CliqueUpModel.Model;
 
-namespace Models.Model
+namespace CliqueUpModel.Model
 {
     public class User
     {
