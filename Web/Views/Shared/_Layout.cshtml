@@ -4,6 +4,9 @@
         @Html.Partial("_Head")
     </head>
     <body>
+        
+        @{ Html.RenderPartial("_PageHeader"); }
+        
         <div id="body">
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix" id="contentBody">
