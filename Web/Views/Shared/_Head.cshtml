@@ -27,9 +27,11 @@
   
     <script type="text/javascript" src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script>
       var map;
+      var currentlocation = google.loader.ClientLocation
       function initialize() {
           var mapOptions = {
               zoom: 8,

@@ -315,12 +315,14 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\GPL-LICENSE.txt" />
+    <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -329,6 +331,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\less-1.3.3.min.js" />
     <Content Include="Scripts\less.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\MIT-LICENSE.txt" />
@@ -336,6 +339,9 @@
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\README.txt" />
     <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
     <Content Include="Views\Event\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
