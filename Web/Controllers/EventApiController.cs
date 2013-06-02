@@ -10,29 +10,56 @@ using System.Web;
 using System.Web.Http;
 using CliqueUpModel.Model;
 using Models.Model;
+using System.Collections.Specialized;
+using DataServiceLayer.Implementation;
+using System.Net.Http.Formatting;
+using System.Web.Security;
 
 namespace CliqueUp.Controllers
 {
     public class EventApiController : ApiController
     {
+        EventService eventService = new EventService();
+
         private CliqueUpContext db = new CliqueUpContext();
 
         // GET api/EventApi
-        public IEnumerable<CategoryEvent> GetEvents()
+        public string GetEvents()
         {
-            return db.CategoryEvents.AsEnumerable<CategoryEvent>();
+            var tempVal = "";
+            var events = db.CategoryEvents.AsEnumerable<CategoryEvent>();
+            
+            var tblBegin = "<table class='table table-striped table-condensed'>"+
+                        "<thead><tr><th>Event</th></tr></thead><tbody>" ; 
+            var tblEnd = "<tbody></table>";
+            tempVal+=tblBegin;
+            
+            foreach (CategoryEvent cEvent  in events)
+            {
+                tempVal += String.Format("<script>addMarkerToMap({0}, {1}, {2})</script>", "map", cEvent.Latitude, cEvent.Longitude);
+                tempVal += "<tr><td><a href='#' onclick=\"popEvent('" + cEvent.Id + "')\"  >" + cEvent.Title + "</td></tr>";
+            }
+            tempVal += tblEnd;
+            return tempVal;
         }
 
         // GET api/EventApi/5
-        public CategoryEvent GetEvent(Guid id)
+        public string GetEvent(Guid id)
         {
+            var retval = "";
             CategoryEvent ev = db.CategoryEvents.Find(id);
-            if (ev == null)
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
-            }
-
-            return ev;
+            //if (ev == null)
+            //{
+            //    throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+            //}
+            retval += "<h3>" + ev.Title + "<h3>";
+            retval += "<ul>";
+            retval += "<li><label>Description:</label>" + ev.Description + "</li>";
+            retval += "<li><label>Created:</label>" + ev.CreateOn.ToString() + "</li>";
+            retval += "<li><label></label>" + ev.StartTime.ToString() + "</li>";
+            retval += "<li><label></label>" + ev.EndTime.ToString() + "</li>";
+            retval += "</ul>";
+            return retval;
         }
 
         // PUT api/EventApi/5
@@ -62,16 +89,38 @@ namespace CliqueUp.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        // POST api/EventApi
-        public HttpResponseMessage PostEvent(CategoryEvent ev)
+        //POST api/EventApi/
+        public HttpResponseMessage PostEvent(FormDataCollection formData)
         {
+            var currUser = Membership.GetUser();
+            
+            var name = formData.Get("evName");
+            var locData = formData.Get("evLoc");
+            var loc = eventService.ReverseGeocode(locData);
+            var poc = formData.Get("pocIn");
+            var desc = formData.Get("descIn");
+
+
+            var ev = new CategoryEvent()
+            {
+                Title = name,
+                Description = desc,
+                Latitude = loc.Latitude,
+                Longitude = loc.Longitude,
+                CreateOn = DateTime.Now,
+                StartTime = DateTime.Now,
+                EndTime =  DateTime.Now
+            };
+            //evName
+            //evLoc
+            //pocIn
             if (ModelState.IsValid)
             {
                 db.CategoryEvents.Add(ev);
                 db.SaveChanges();
-
+                var user = db.Users.Where(x => x.Id==ev.Id).FirstOrDefault();
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, ev);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = ev.Id }));
+                response.Headers.Location = new Uri(Url.Link("Event", new { userId =user.Id = ev.Id }));
                 return response;
             }
             else

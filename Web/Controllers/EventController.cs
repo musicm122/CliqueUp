@@ -16,51 +16,40 @@ namespace CliqueUp.Controllers
         {
             _eventService = new EventService(); 
         }
-
+        
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Create(EventModel model) 
-        {
-            if (ModelState.IsValid)
-            {
-                _eventService.CreateEvent(model.Title, model.Description, model.Categories, model.EventStart, model.EventEnd, model.Latitude, model.Longititude);
-                ViewBag.StatusMessage = "Your event has been created successfully.";
-            }
-            else 
-            {
-                ModelState.AddModelError("Error", "Invalid Event Submitted . Please Check your form.");
-                return View(model);
-            }
-            return View();
-        }
+        //public ActionResult Create(EventModel model) 
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _eventService.CreateEvent(model.Title, model.Description, model.Categories, model.EventStart, model.EventEnd, model.Latitude, model.Longititude);
+        //        ViewBag.StatusMessage = "Your event has been created successfully.";
+        //    }
+        //    else 
+        //    {
+        //        ModelState.AddModelError("Error", "Invalid Event Submitted . Please Check your form.");
+        //        return View(model);
+        //    }
+        //    return View();
+        //}
 
-        public ActionResult Close(Guid userId, Guid eventId)
-        {
-            if (ModelState.IsValid) 
-            {
-                _eventService.CloseEvent(userId, eventId);
-            }
-            else
-            {
-                ModelState.AddModelError("Error", "Invalid info.");
-                return View();
-            }
-            return View();
-        }
+
         
-        public ActionResult Open(Guid userId, Guid id )
-        {
-            _eventService.OpenEvent(userId, id);
-            return View();
-        }
+        //public ActionResult Open(Guid userId, Guid id )
+        //{
+        //    _eventService.OpenEvent(userId, id);
+        //    return View();
+        //}
         
-        public ActionResult Delete()
-        {
-            return View();
-        }
+        //public ActionResult Delete()
+        //{
+        //    return View();
+        //}
 
 
     }

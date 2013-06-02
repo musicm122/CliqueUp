@@ -44,9 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exception\InvalidGeocodeException.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\CliqueUpContext.cs" />
     <Compile Include="Model\CategoryEvent.cs" />
+    <Compile Include="Model\Coordinate.cs" />
     <Compile Include="Model\EventMessage.cs" />
     <Compile Include="Model\EventUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

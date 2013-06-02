@@ -50,9 +50,10 @@ namespace DataServiceLayer.Implementation
         {
             try
             {
-                var request = new GeocodingRequest { Address = locationSearch };
+                var request = new GeocodingRequest { Address = locationSearch, Sensor=true};
                 var response = GeocodingService.GetResponse(request);
                 var latlon = response.Results.First().Geometry.Location;
+
                 return new Coordinate { Latitude = latlon.Latitude, Longitude = latlon.Longitude };
             }
 
