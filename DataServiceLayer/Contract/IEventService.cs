@@ -20,7 +20,7 @@ namespace CliqueUpModel.Contract
         /// <param name="lat">Approximate latitude of the event</param>
         /// <param name="lon">Approximate longitude of the event</param>
         /// <returns>Event object created.</returns>
-        Event CreateEvent(string title, string description, IEnumerable<string> categories, DateTime start, DateTime end, decimal lat, decimal lon);
+        CategoryEvent CreateEvent(string title, string description, IEnumerable<string> categories, DateTime start, DateTime end, decimal lat, decimal lon);
         
         /// <summary>
         /// Marks an event as active

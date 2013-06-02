@@ -9,10 +9,10 @@ namespace CliqueUpModel.Implementation
 {
     public class EventService : IEventService
     {
-        public Event CreateEvent(string title, string description, IEnumerable<string> categories, System.DateTime start, System.DateTime end, decimal lat, decimal lon)
+        public CategoryEvent CreateEvent(string title, string description, IEnumerable<string> categories, System.DateTime start, System.DateTime end, decimal lat, decimal lon)
         {
 
-            var newEvent = new Event()
+            var newEvent = new CategoryEvent()
                 {
                     Id = Guid.NewGuid(),
 

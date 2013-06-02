@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\CliqueUpContext.cs" />
-    <Compile Include="Model\Event.cs" />
+    <Compile Include="Model\CategoryEvent.cs" />
     <Compile Include="Model\EventMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\User.cs" />
