@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\GeoMath.cs" />
     <Compile Include="Implementation\EventService.cs" />
     <Compile Include="Contract\IEventService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

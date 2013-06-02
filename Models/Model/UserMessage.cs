@@ -1,4 +1,5 @@
 ﻿using System;
+using Models.Model;
 
 namespace CliqueUpModel.Model
 {
