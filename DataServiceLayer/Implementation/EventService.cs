@@ -5,6 +5,7 @@ using CliqueUpModel.Model;
 using CliqueUpModel.Contract;
 using DataServiceLayer.Helper;
 using Google.Maps.Geocoding;
+using Models.Exception;
 using Models.Model;
 
 namespace DataServiceLayer.Implementation
@@ -45,16 +46,26 @@ namespace DataServiceLayer.Implementation
             throw new NotImplementedException();
         }
 
+        public Coordinate ReverseGeocode(string locationSearch)
+        {
+            try
+            {
+                var request = new GeocodingRequest { Address = locationSearch };
+                var response = GeocodingService.GetResponse(request);
+                var latlon = response.Results.First().Geometry.Location;
+                return new Coordinate { Latitude = latlon.Latitude, Longitude = latlon.Longitude };
+            }
+
+            catch (Exception exception)
+            {
+                throw new InvalidGeocodeException("Reverse geocode failed. See InnerException for details", exception);
+            }
+        }
+
         public IEnumerable<CategoryEvent> SearchEvents(string searchQuery, string location, int searchRadiusMiles)
         {
-            var request = new GeocodingRequest {Address = location};
-            var response = GeocodingService.GetResponse(request);
-            var latlon = response.Results.First().Geometry.Location;
-
-            var latitude = latlon.Latitude;
-            var longitude = latlon.Longitude;
-
-            return this.SearchEvents(searchQuery, latitude, longitude, searchRadiusMiles);
+            var coord = ReverseGeocode(location);
+            return this.SearchEvents(searchQuery, coord.Latitude, coord.Longitude, searchRadiusMiles);
         }
 
         public IEnumerable<CategoryEvent> SearchEvents(string searchQuery, double baseLatitude, double baseLongitude, int searchRadiusMiles)
