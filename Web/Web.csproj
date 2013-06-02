@@ -382,6 +382,7 @@
     <Content Include="Views\Event\EventInfo.cshtml" />
     <Content Include="Views\Event\EventMessages.cshtml" />
     <Content Include="Views\Shared\_PageHeader.cshtml" />
+    <Content Include="Views\Event\EventMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
