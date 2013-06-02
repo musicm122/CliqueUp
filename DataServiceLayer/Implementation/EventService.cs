@@ -5,6 +5,7 @@ using CliqueUpModel.Model;
 using CliqueUpModel.Contract;
 using DataServiceLayer.Helper;
 using Models.Model;
+using Google.Maps.Geocoding;
 
 namespace DataServiceLayer.Implementation
 {
@@ -42,6 +43,18 @@ namespace DataServiceLayer.Implementation
         public bool CloseEvent(Guid userId, Guid eventId)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<Event> SearchEvents(string searchQuery, string location, int searchRadiusMiles)
+        {
+            var request = new GeocodingRequest {Address = location};
+            var response = GeocodingService.GetResponse(request);
+            var latlon = response.Results.First().Geometry.Location;
+
+            var latitude = latlon.Latitude;
+            var longitude = latlon.Longitude;
+
+            return this.SearchEvents(searchQuery, latitude, longitude, searchRadiusMiles);
         }
 
         public IEnumerable<Event> SearchEvents(string searchQuery, double baseLatitude, double baseLongitude, int searchRadiusMiles)
